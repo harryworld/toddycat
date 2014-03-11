@@ -11,3 +11,49 @@
  *= require_self
  *= require_tree .
  */
+
+html,
+body {
+  height: 100%;
+  /*background-color: hsla( 0, 0.0%, 100.0%, 1 );*/
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -60px; /* Negative indent footer by its height */
+  padding: 0 0 60px;    /* Pad bottom by footer height */
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  text-align: left;
+  font-size: 130%;
+  line-height: 1.5;
+  color: #5cb85c;
+  border-bottom: 1px solid #5cb85c;
+}
+
+.main {
+  padding-top: 80px;
+}
+
+footer {
+  height: 60px;
+  background-color: hsla( 0, 0.0%, 96.0%, 1 );
+}
+
+.container .credit {
+  text-align: right;
+  margin: 20px 0;
+}
+
+footer > .container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
