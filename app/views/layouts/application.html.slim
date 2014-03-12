@@ -8,20 +8,24 @@ html
     = csrf_meta_tags
 
   body
+
     #wrap
+
       header.navbar.navbar-inverse.navbar-fixed-top role="banner"
         .container
           h1.navbar-brand ToddyCat
+
       main.container.main role="main"
         .row
           .col-md-4.col-md-offset-4
             ==yield
+
     footer
       .container
         .row
           p.text-muted.credit
-            a href="/privacy" Privacy Policy
+            = link_to "Privacy Policy", privacy_url
             | &bull;
-            a href="/terms" Terms of Use
+            = link_to "Terms of Use", terms_url
             | &bull;
             | &copy; 2013 ToddyCat
