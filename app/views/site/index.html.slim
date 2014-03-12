@@ -1,2 +1,7 @@
 p
   | Hi there (form code here)
+
+ol
+  - @users.each do |some_user|
+    li
+      = some_user.email
