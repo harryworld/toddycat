@@ -1,11 +1,13 @@
 class SessionController < ApplicationController
 
+  # skip_before_action :verify_authenticity_token
+
   def new
-    render text: "Display the log in form."
+    # render text: "Display the log in form."
   end
 
   def create
-    render text: "Log the user in."
+    render text: "Log #{params[:user][:email]} in with #{params[:user][:password]}."
   end
 
   def destroy
