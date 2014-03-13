@@ -11,4 +11,6 @@ Toddycat::Application.routes.draw do
   get 'privacy' => 'site#privacy'
   get 'terms' => 'site#terms'
 
+  get 'wdi' => 'site#wdi'
+
 end

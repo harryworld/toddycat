@@ -15,7 +15,7 @@ class User
 
   def self.authenticate email, password
     user = User.find_by email: email
-    user if user if user.authenticate(password)
+    user if user and user.authenticate(password)
   end
 
   def authenticate password

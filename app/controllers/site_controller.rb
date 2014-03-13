@@ -11,4 +11,8 @@ class SiteController < ApplicationController
   def terms
   end
 
+  def wdi
+    @fuck = "you"
+  end
+
 end
