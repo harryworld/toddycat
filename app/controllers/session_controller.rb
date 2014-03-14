@@ -3,8 +3,8 @@ class SessionController < ApplicationController
   # skip_before_action :verify_authenticity_token
 
   def new
-    @messages = flash.inspect
-    # @messages = flash.map {|key, value| "#{key.capitalize}: #{value}"}.join(";")
+    # @messages = flash.inspect
+    # @messages = flash.map {| key, value| "#{key.capitalize}: #{value}"}.join(";")
     # render text: "Display the log in form."
   end
 
@@ -18,7 +18,7 @@ class SessionController < ApplicationController
       # render text: "Logged in yo! #{@user.email}"
       redirect_to root_url
     else
-      # render text: "Who are you?"
+      flash.now[:alert] = "Unable to log you in. Please check your email and password and try again."
       render :new
     end
 
