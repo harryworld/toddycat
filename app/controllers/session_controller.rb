@@ -3,6 +3,8 @@ class SessionController < ApplicationController
   # skip_before_action :verify_authenticity_token
 
   def new
+    @messages = flash.inspect
+    # @messages = flash.map {|key, value| "#{key.capitalize}: #{value}"}.join(";")
     # render text: "Display the log in form."
   end
 
@@ -24,6 +26,7 @@ class SessionController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    render text: "Log the user out."
+    # render text: "Log the user out."
+    redirect_to login_url, notice: "You've successfully logged out."
   end
 end
