@@ -12,5 +12,6 @@ gem 'bcrypt'
 
 group :development, :test do
   # gem "better_errors"
+  gem 'pry'
   gem "binding_of_caller"
 end

@@ -16,7 +16,8 @@ class SessionController < ApplicationController
       # render text: "Logged in yo! #{@user.email}"
       redirect_to root_url
     else
-      render text: "Who are you?"
+      # render text: "Who are you?"
+      render :new
     end
 
   end
