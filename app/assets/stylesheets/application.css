@@ -57,3 +57,8 @@ footer > .container {
   padding-left: 15px;
   padding-right: 15px;
 }
+
+.noty_text {
+  font-size : 18px;
+  font-weight: normal;
+}
