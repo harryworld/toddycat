@@ -6,6 +6,7 @@ class SessionController < ApplicationController
     # @messages = flash.inspect
     # @messages = flash.map {| key, value| "#{key.capitalize}: #{value}"}.join(";")
     # render text: "Display the log in form."
+    redirect_to root_url, notice: "You are logged in." if current_user
   end
 
   def create
