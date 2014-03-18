@@ -1,5 +1,10 @@
 class PasswordResetter
 
+  SUCCESS = "We'll send you an email with instrutions for resetting"
+  NO_MAIL = "Unable to send email. Please notify webmaster"
+  NO_SAVE = "Password reset failed. Please notify webmaster"
+  NO_USER = "Unable to log you in. Please check your Email and Password again "
+
   def initialize(flash)
     @flash = flash
   end
@@ -10,16 +15,16 @@ class PasswordResetter
         #code for our email sending and error catching
         begin
           UserNotifier.reset_password(@user).deliver
-          @flash.now[:notice] = "We'll send you an email with instrutions for resetting"
+          @flash.now[:notice] = SUCCESS
         rescue
-          @flash.now[:alert] = "Unable to send email. Please notify webmaster"
+          @flash.now[:alert] = NO_MAIL
         end
 
       else
-        @flash.now[:alert] = "Password reset failed. Please notify webmaster"
+        @flash.now[:alert] = NO_SAVE
       end
     else
-      @flash.now[:alert] = "Unable to log you in. Please check your Email and Password again "
+      @flash.now[:alert] = NO_USER
     end
   end
 end
