@@ -17,13 +17,18 @@ class SessionController < ApplicationController
       # password reset
       if password.blank?
         if user.set_password_reset
-          UserNotifier.reset_password(user).deliver
-          flash.now[:notice] = "We'll send you an email with instrutions for resetting"
-          render :new
+
+          begin
+            UserNotifier.reset_password(user).deliver
+            flash.now[:notice] = "We'll send you an email with instrutions for resetting"
+          rescue
+            flash.now[:alert] = "Unable to send email. Please notify webmaster"
+          end
+
         else
           flash.now[:alert] = "Password reset failed."
-          render :new
         end
+          render :new
       elsif user.authenticate(password)
         #user authentication
         session[:user_id] = user.id
