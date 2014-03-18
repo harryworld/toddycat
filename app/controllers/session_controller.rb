@@ -12,10 +12,10 @@ class SessionController < ApplicationController
   def create
     if params[:user][:password].blank?
       #password reset flow
-      PasswordResetter.new.handle_reset_request(user_params)
+      PasswordResetter.new(flash).handle_reset_request(user_params)
     else
       #authenticate password flow
-      UserAuthenticator.new.authenticate_user(user_params)
+      UserAuthenticator.new(flash).authenticate_user(user_params)
     end
     render :new
   end
