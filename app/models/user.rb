@@ -25,6 +25,10 @@ class User
     user if user and user.authenticate(password)
   end
 
+  def self.find_by_code code
+    User.find_by({:code => code, :expires_at => {"$gte" => Time.now.gmtime}})
+  end
+
   def authenticate password
     self.fish == BCrypt::Engine.hash_secret(password, self.salt)
   end
@@ -38,6 +42,7 @@ class User
     self.expires_at = PASSWORD_RESET_EXPIRES.hours.from_now
     self.save!
   end
+
 
 
   protected
