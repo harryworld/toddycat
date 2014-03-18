@@ -15,8 +15,9 @@ class SessionController < ApplicationController
       PasswordResetter.new(flash).handle_reset_request(user_params)
     else
       #authenticate password flow
-      UserAuthenticator.new(flash).authenticate_user(user_params)
+      UserAuthenticator.new(session,flash).authenticate_user(user_params)
     end
+    (redirect_to root_url and return) if flash.empty?
     render :new
   end
 
