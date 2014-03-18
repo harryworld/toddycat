@@ -36,6 +36,7 @@ class User
     self.fish == BCrypt::Engine.hash_secret(password, self.salt)
   end
 
+
   def set_password_reset
     self.code = SecureRandom.urlsafe_base64
     set_expiration
@@ -43,7 +44,7 @@ class User
 
   def set_expiration
     self.expires_at = PASSWORD_RESET_EXPIRES.hours.from_now
-    self.save!
+    self.save
   end
 
 

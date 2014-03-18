@@ -10,20 +10,28 @@ class SessionController < ApplicationController
   end
 
   def create
-    # @user = User.authenticate(params[:user][:email], params[:user][:password])
     user = User.find_by(email: params[:user][:email])
     password = params[:user][:password]
 
+    if user
+      # password reset
+      if password.blank?
+        if user.set_password_reset
+          UserNotifier.reset_password(user).deliver
+          flash.now[:notice] = "We'll send you an email with instrutions for resetting"
+          render :new
+        else
+          flash.now[:alert] = "Password reset failed."
+          render :new
+        end
+      elsif user.authenticate(password)
+        #user authentication
+        session[:user_id] = user.id
+        redirect_to root_url
+      end
 
-    if user and password.blank?
-      user.set_password_reset
-      UserNotifier.reset_password(user).deliver
-      flash.now[:notice] = "We'll send you an email.."
-      render :new
-    elsif user and user.authenticate(password)
-      session[:user_id] = user.id
-      redirect_to root_url
     else
+      # failure
       flash.now[:alert] = "Unable to log you in. Please check your email and password and try again."
       render :new
     end
