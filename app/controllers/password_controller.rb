@@ -24,8 +24,6 @@
         redirect_to root_url, notice: "Your password has been successfully reset."
       
       else
-        binding.pry
-        
         flash.now[:alert] = @user.errors
         render :edit
       
