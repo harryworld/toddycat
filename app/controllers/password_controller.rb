@@ -20,7 +20,7 @@
       elsif @user.reset_password( user_params )
         
         UserNotifier.password_was_reset(@user).deliver
-        session[:user_id] = @user.id
+        log_user_in( @user )
         redirect_to root_url, notice: "Your password has been successfully reset."
       
       else
