@@ -20,8 +20,7 @@
       elsif @user.reset_password( user_params )
         
         UserNotifier.password_was_reset(@user).deliver
-        log_user_in( @user )
-        redirect_to root_url, notice: "Your password has been successfully reset."
+        log_user_in( @user, "Your password has been successfully reset." )
       
       else
         flash.now[:alert] = @user.errors
