@@ -48,7 +48,9 @@ class User
   end
 
   def reset_password(params)
-    self.update_attributes(params.merge( code: nil, expires_at: nil ))
+    if self.update_attributes(params)
+      self.update_attributes(params.merge( code: nil, expires_at: nil ))
+    end
   end
 
   protected
