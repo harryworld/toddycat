@@ -15,4 +15,7 @@ group :development, :test do
   gem 'pry'
   gem "binding_of_caller"
   gem 'letter_opener'
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
 end
