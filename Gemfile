@@ -18,4 +18,15 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-livereload'
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
 end
